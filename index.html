@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SM Tech Solutions | Business Website</title>
+<meta name="description" content="SM Tech Solutions – Website Development, SEO, Digital Marketing & IT Services">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#f8fafc;color:#0f172a;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.05)}
+.nav-container{display:flex;justify-content:space-between;align-items:center;padding:15px 10%;max-width:1400px;margin:0 auto}
+.logo{font-size:1.4rem;font-weight:700;color:#2563eb;display:flex;align-items:center;gap:8px}
+.logo-img{width:100px;height:60px}
+.menu{display:flex;align-items:center}
+.menu a{margin-left:25px;font-weight:500;transition:0.3s}
+.menu a:hover{color:#2563eb}
+
+/* Mobile Menu Toggle */
+.menu-toggle{display:none;flex-direction:column;cursor:pointer;gap:5px}
+.menu-toggle span{width:25px;height:3px;background:#2563eb;transition:0.3s;border-radius:2px}
+
+/* HERO WITH VIDEO */
+header{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 10% 60px;position:relative;overflow:hidden}
+.video-bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.video-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:2}
+header > div{position:relative;z-index:3}
+header h1{font-size:3.2rem;color:#fff;text-shadow:2px 2px 8px rgba(0,0,0,0.3);margin-bottom:20px}
+header p{margin:20px 0;font-size:1.2rem;color:#fff;text-shadow:2px 2px 8px rgba(0,0,0,0.3)}
+.btn{padding:14px 32px;background:#2563eb;color:#fff;border-radius:30px;font-weight:600;display:inline-block;transition:.3s;border:none;cursor:pointer}
+.btn:hover{transform:scale(1.08);box-shadow:0 10px 25px rgba(37,99,235,0.3)}
+
+section{padding:90px 10%;max-width:1400px;margin:0 auto}
+.title{text-align:center;font-size:2.4rem;margin-bottom:50px;font-weight:700;color:#0f172a}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+.card{background:#fff;padding:30px;border-radius:22px;box-shadow:0 10px 40px rgba(0,0,0,.08);transition:.4s}
+.card:hover{transform:translateY(-12px);box-shadow:0 15px 50px rgba(0,0,0,.12)}
+
+/* CLIENT PREVIEW */
+.client-preview{position:relative;display:block;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;margin-top:15px}
+.client-preview img{width:100%;height:220px;object-fit:cover;transition:.4s}
+.client-preview .overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;opacity:0;transition:.4s;font-size:1.1rem}
+.client-preview:hover img{transform:scale(1.08)}
+.client-preview:hover .overlay{opacity:1}
+
+/* WHATSAPP */
+.whatsapp{position:fixed;bottom:25px;right:25px;background:#25d366;color:#fff;padding:14px 20px;border-radius:50px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.2);z-index:99;display:flex;align-items:center;gap:8px;transition:0.3s}
+.whatsapp:hover{transform:scale(1.05);box-shadow:0 15px 40px rgba(0,0,0,.3)}
+
+/* CTA Section */
+.cta-section{padding:120px 10%;background:#000;text-align:center;color:white}
+.cta-section h2{font-size:3.5rem;margin-bottom:1.5rem;font-weight:800}
+.cta-section p{font-size:1.3rem;margin-bottom:3rem;opacity:0.95}
+
+.contact-info h3{font-size:1.6rem;margin-bottom:10px;color:#0f172a}
+.contact-info p{margin:15px 0;color:#475569;line-height:1.8}
+
+.contact-form .field{position:relative;margin-bottom:30px}
+.contact-form input,.contact-form textarea,.contact-form select{width:100%;padding:14px;border:none;border-bottom:2px solid #cbd5e1;background:transparent;font-size:15px;outline:none;transition:0.3s}
+.contact-form textarea{min-height:90px;resize:vertical}
+.contact-form label{position:absolute;left:14px;top:14px;color:#64748b;pointer-events:none;transition:.3s;font-size:15px}
+.contact-form input:focus + label,.contact-form textarea:focus + label,.contact-form select:focus + label,.contact-form input:valid + label,.contact-form textarea:valid + label,.contact-form select:valid + label{top:-10px;font-size:12px;color:#2563eb}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{border-bottom-color:#2563eb}
+.btn.full{width:100%;text-align:center}
+
+/* CLIENT LOGO SECTION */
+.client-logos-section{padding:90px 10%;background:#ffffff}
+.client-logos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:40px;align-items:center;justify-items:center}
+.client-logo{opacity:0.95;transition:all 0.4s ease}
+.client-logo img{max-width:150px;max-height:80px;object-fit:contain}
+.client-logo:hover{transform:scale(1.15)}
+.client-logo:hover img{filter:drop-shadow(0 10px 25px rgba(37,99,235,0.35))}
+
+/* FOOTER */
+.main-footer{background:#ffffff;border-top:1px solid #e5e7eb;padding:70px 10% 20px;font-size:15px;color:#475569}
+.footer-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:50px;max-width:1400px;margin:0 auto}
+.footer-logo img{max-width:160px;margin-bottom:20px}
+.footer-col h4{font-size:1.1rem;color:#0f172a;margin-bottom:15px;font-weight:600}
+.footer-col p{margin-bottom:10px;line-height:1.6}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:10px}
+.footer-col ul li a{color:#475569;transition:0.3s;display:inline-block}
+.footer-col ul li a:hover{color:#2563eb;padding-left:5px}
+.social-icons{display:flex;gap:15px;margin:20px 0}
+.social-icons a{font-size:20px;color:#2563eb;transition:0.3s}
+.social-icons a:hover{transform:scale(1.2)}
+.footer-bottom{text-align:center;padding-top:30px;margin-top:40px;border-top:1px solid #e5e7eb;font-size:14px;color:#64748b}
+
+/* SERVICES WITH IMAGES */
+.services-grid{gap:35px}
+.service-card{padding:0;overflow:hidden;text-align:center}
+.service-card img{width:100%;height:190px;object-fit:cover;border-radius:22px 22px 0 0;transition:transform 0.4s ease}
+.service-card h3{padding:25px 20px;font-size:1.05rem;font-weight:600;color:#0f172a}
+.service-card:hover img{transform:scale(1.08)}
+
+/* ABOUT SECTION */
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:50px;align-items:center;margin-top:50px}
+.about-grid img{width:100%;border-radius:20px;box-shadow:0 15px 40px rgba(0,0,0,0.1)}
+.about-grid p{font-size:1.1rem;line-height:1.8;color:#475569}
+.about-grid strong{color:#0f172a}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:768px){
+  .nav-container{padding:15px 5%}
+  .menu-toggle{display:flex}
+  .menu{position:fixed;top:70px;left:-100%;width:100%;background:white;flex-direction:column;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.1);transition:0.3s;align-items:flex-start}
+  .menu.active{left:0}
+  .menu a{margin:15px 0;padding:10px;border-bottom:1px solid #e5e7eb;width:100%}
+  
+  header{padding:100px 5% 40px;min-height:80vh}
+  header h1{font-size:1.8rem}
+  header p{font-size:1rem}
+  
+  section{padding:60px 5%}
+  .title{font-size:1.8rem;margin-bottom:30px}
+  .grid{grid-template-columns:1fr;gap:20px}
+  .about-grid{grid-template-columns:1fr;gap:30px}
+  
+  .logo-img{width:80px;height:40px}
+  .card{padding:20px}
+  .card:hover{transform:translateY(-5px)}
+  
+  .service-card img{height:150px}
+  .service-card h3{font-size:0.95rem;padding:15px}
+  .client-preview img{height:180px}
+  
+  .cta-section{padding:80px 5%}
+  .cta-section h2{font-size:2rem}
+  .cta-section p{font-size:1rem;margin-bottom:2rem}
+  
+  .main-footer{padding:50px 5% 20px}
+  .footer-container{grid-template-columns:1fr;gap:30px}
+  
+  .client-logos-section{padding:60px 5%}
+  .client-logos-grid{grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:25px}
+  .client-logo img{max-width:120px;max-height:60px}
+  
+  .whatsapp{bottom:15px;right:15px;padding:12px 16px;font-size:0.9rem}
+}
+
+@media(max-width:480px){
+  header h1{font-size:1.5rem}
+  .btn{padding:12px 24px;font-size:0.9rem}
+  .title{font-size:1.5rem}
+  .cta-section h2{font-size:1.6rem}
+  .logo-img{width:70px;height:35px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="#home" class="logo">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%23000000' width='200' height='200'/%3E%3Ctext x='50%25' y='45%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='80' fill='white' font-weight='400'%3Esm.%3C/text%3E%3Ctext x='50%25' y='70%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='35' fill='white' font-weight='300'%3Etechsolutions%3C/text%3E%3Ctext x='88%25' y='70%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='15' fill='white'%3E™%3C/text%3E%3C/svg%3E" alt="SM Tech Solutions" class="logo-img">
+    </a>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="menu" id="mobileMenu">
+      <a href="#about" onclick="closeMenu()">About Us</a>
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#clients" onclick="closeMenu()">Clients</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <video autoplay muted loop playsinline class="video-bg">
+    <source src="https://www.pexels.com/download/video/3129957/" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+  <div data-aos="fade-up">
+    <h1>Grow Your Business With SM Tech Solutions</h1>
+    <p>Websites • SEO • Digital Marketing • IT Services</p>
+    <a href="#contact" class="btn">Free Consultation</a>
+  </div>
+</header>
+
+<section id="about" style="background:#f1f5f9;padding:100px 10%">
+  <h2 class="title" data-aos="fade-up">About Us</h2>
+  
+  <div class="about-grid">
+    <div data-aos="fade-right">
+      <img src="https://images.pexels.com/photos/811587/pexels-photo-811587.jpeg" alt="SM Tech Solutions Team">
+    </div>
+    
+    <div data-aos="fade-left">
+      <p>
+        <strong>SM Tech Solutions</strong> is a leading digital solutions company helping businesses grow in the modern digital era. 
+        We specialize in creating stunning websites, e-commerce platforms, and comprehensive digital marketing strategies.  
+        <br><br>
+        Our team of passionate developers, designers, and marketers works closely with clients to deliver innovative, reliable, 
+        and ROI-driven solutions. We believe in empowering businesses with technology, creativity, and strategy to help them 
+        thrive online.
+        <br><br>
+        At SM Tech Solutions, your growth is our mission. From startups to enterprises, we ensure every project we undertake 
+        is tailored to deliver measurable results.
+      </p>
+      <a href="#contact" class="btn" style="margin-top:20px;display:inline-block">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <h2 class="title" data-aos="fade-up">Our Services</h2>
+  <div class="grid services-grid">
+    <div class="card service-card" data-aos="zoom-in">
+      <img src="https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg" alt="Website Development">
+      <h3>Business Website Development</h3>
+    </div>
+    <div class="card service-card" data-aos="zoom-in">
+      <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg" alt="Mobile App Development">
+      <h3>Mobile App Development</h3>
+    </div>
+    <div class="card service-card" data-aos="zoom-in">
+      <img src="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg" alt="E-Commerce">
+      <h3>E-Commerce Development</h3>
+    </div>
+    <div class="card service-card" data-aos="zoom-in">
+      <img src="https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg" alt="SEO Marketing">
+      <h3>SEO & Digital Marketing</h3>
+    </div>
+    <div class="card service-card" data-aos="zoom-in">
+      <img src="https://images.pexels.com/photos/326503/pexels-photo-326503.jpeg" alt="Branding UI UX">
+      <h3>Branding & UI/UX</h3>
+    </div>
+    <div class="card service-card" data-aos="zoom-in">
+      <img src="https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg" alt="Logo Design">
+      <h3>Logo & Visiting Card Design</h3>
+    </div>
+    <div class="card service-card" data-aos="zoom-in">
+      <img src="https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg" alt="Social Media Marketing">
+      <h3>Social Media Marketing</h3>
+    </div>
+    <div class="card service-card" data-aos="zoom-in">
+      <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg" alt="Web Application">
+      <h3>Custom Web Application Development</h3>
+    </div>
+  </div>
+</section>
+
+<section id="clients">
+  <h2 class="title" data-aos="fade-up">Our Clients</h2>
+  <div class="grid">
+    <div class="card" data-aos="zoom-in">
+      <h3>QMeasure Technologies Pvt Ltd., Bangalore</h3>
+      <a href="https://qmeasuretech.com/index.html" target="_blank" class="client-preview">
+        <img src="https://qmeasuretech.com/images/logo.jpeg" alt="QMeasure Technologies">
+        <div class="overlay">View Live Website</div>
+      </a>
+    </div>
+    <div class="card" data-aos="zoom-in">
+      <h3>9 Planets Resort</h3>
+      <a href="https://9planetsresort.in" target="_blank" class="client-preview">
+        <img src="https://9planetsresort.in/images/logo.JPG" alt="9 Planets Resort">
+        <div class="overlay">View Live Website</div>
+      </a>
+    </div>
+    <div class="card" data-aos="zoom-in">
+      <h3>Canopy By The Coast, Goa</h3>
+      <a href="https://www.canopybythecoast.in/" target="_blank" class="client-preview">
+        <img src="https://static.wixstatic.com/media/be975a_8e74d4c6f4864ed79d6cebe460283827~mv2.png/v1/fill/w_178,h_166,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/be975a_8e74d4c6f4864ed79d6cebe460283827~mv2.png" alt="Canopy By The Coast">
+        <div class="overlay">View Live Website</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="client-logos-section">
+  <h2 class="title" data-aos="fade-up">Trusted By Our Clients</h2>
+  <div class="client-logos-grid">
+    <div class="client-logo" data-aos="zoom-in">
+      <img src="https://qmeasuretech.com/images/logo.jpeg" alt="QMeasure Technologies">
+    </div>
+    <div class="client-logo" data-aos="zoom-in">
+      <img src="https://9planetsresort.in/images/logo.JPG" alt="9 Planets Resort">
+    </div>
+    <div class="client-logo" data-aos="zoom-in">
+      <img src="https://static.wixstatic.com/media/be975a_8e74d4c6f4864ed79d6cebe460283827~mv2.png/v1/fill/w_178,h_166,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/be975a_8e74d4c6f4864ed79d6cebe460283827~mv2.png" alt="Canopy By The Coast">
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Let's Build Something Amazing</h2>
+  <p>Focus on Growth While We Drive Your Tech Innovation</p>
+</section>
+
+<section id="contact" style="background:#f8fafc">
+  <h2 class="title" data-aos="fade-up">Contact Us</h2>
+  <div class="grid">
+    <div class="card contact-info" data-aos="fade-right">
+      <h3>Let's Talk</h3>
+      <p>Have a project in mind? We'd love to help.</p>
+      <p>📧 <strong>Email:</strong><br>smtechhsolutions@gmail.com</p>
+      <p>📞 <strong>Phone / WhatsApp:</strong><br>+91 89712 27169</p>
+    </div>
+    <div class="card" data-aos="fade-left">
+      <form onsubmit="sendToWhatsApp(event)" class="contact-form">
+        <div class="field">
+          <input type="text" id="name" required>
+          <label>Name</label>
+        </div>
+        <div class="field">
+          <input type="email" id="email" required>
+          <label>Email</label>
+        </div>
+        <div class="field">
+          <select id="service" required>
+            <option value="" disabled selected></option>
+            <option>Website Development</option>
+            <option>Mobile App Development</option>
+            <option>E-Commerce Website</option>
+            <option>SEO & Digital Marketing</option>
+            <option>Branding & UI/UX</option>
+            <option>Other</option>
+          </select>
+          <label>Service Needed</label>
+        </div>
+        <div class="field">
+          <textarea id="message" required></textarea>
+          <label>Message</label>
+        </div>
+        <button class="btn full">Send on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/918971227169" class="whatsapp">
+  <i class="fab fa-whatsapp"></i> WhatsApp
+</a>
+
+<footer class="main-footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <div class="footer-logo">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%23000000' width='200' height='200'/%3E%3Ctext x='50%25' y='45%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='80' fill='white' font-weight='400'%3Esm.%3C/text%3E%3Ctext x='50%25' y='70%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='35' fill='white' font-weight='300'%3Etechsolutions%3C/text%3E%3Ctext x='88%25' y='70%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='15' fill='white'%3E™%3C/text%3E%3C/svg%3E" alt="SM Tech Solutions">
+      </div>
+      <p>We are a dynamic team of passionate and driven professionals, dedicated to fulfilling all your web, app, online presence, and marketing requirements under one roof.</p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/sm.techsolutions" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:smtechhsolutions@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://wa.me/918971227169" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Important Link</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#clients">Our Clients</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Info</h4>
+      <p>📍 Near Crasto Garage,<br>Chikkensal Road, Kundapura,<br>Udupi Dist, Karnataka – 576201</p>
+      <p>📞 +91 89712 27169</p>
+      <p>⏰ Mon–Fri: 10 AM – 7 PM IST</p>
+      <p>✉️ smtechhsolutions@gmail.com</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 SM Tech Solutions | All Rights Reserved
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({once:true,duration:900});
+
+function toggleMenu(){
+  const menu=document.getElementById('mobileMenu');
+  menu.classList.toggle('active');
+}
+
+function closeMenu(){
+  const menu=document.getElementById('mobileMenu');
+  menu.classList.remove('active');
+}
+
+document.addEventListener('click',function(event){
+  const menu=document.getElementById('mobileMenu');
+  const toggle=document.querySelector('.menu-toggle');
+  if(!menu.contains(event.target)&&!toggle.contains(event.target)){
+    menu.classList.remove('active');
+  }
+});
+
+function sendToWhatsApp(e){
+  e.preventDefault();
+  const name=document.getElementById("name").value;
+  const email=document.getElementById("email").value;
+  const service=document.getElementById("service").value;
+  const message=document.getElementById("message").value;
+  const phone="918971227169";
+  const text=`Hello SM Tech Solutions 👋\n\nName: ${name}\nEmail: ${email}\nService Needed: ${service}\n\nMessage:\n${message}`;
+  const url=`https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+  window.open(url,"_blank");
+}
+</script>
+
+</body>
+</html>
